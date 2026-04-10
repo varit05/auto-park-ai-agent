@@ -1,11 +1,11 @@
-import { ChatGoogle } from "@langchain/google";
+import express from "express";
+import { apiRouter } from "./router";
 
-async function main() {
-  const model = new ChatGoogle("gemini-2.5-flash");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-  const res = await model.invoke([["human", "What's the weather in London?"]]);
+app.use("/api", apiRouter);
 
-  console.log(res.content);
-}
-
-main().catch(console.error);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
