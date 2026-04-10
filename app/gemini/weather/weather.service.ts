@@ -1,17 +1,24 @@
-import { Request, Response } from "express";
-import { ChatGoogle } from "@langchain/google";
+import { Request, Response, NextFunction } from "express";
+import model from "../lib/chat-google";
 
-export const getWeather = async (req: Request, res: Response) => {
+export const getWeather = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
-    const model = new ChatGoogle("gemini-2.5-flash");
-
-    const res = await model.invoke([
+    const result = await model.invoke([
       ["human", "What's the weather in London?"],
     ]);
 
-    console.log(res.content);
-    return res.content;
+    return res.status(200).json({
+      status: "OK",
+      timestamp: new Date().toISOString(),
+      data: {
+        weather: result.content,
+      },
+    });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 };
