@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import model from "../lib/chat-google";
+import { WEATHER_AGENT_PROMPT } from "../prompts";
 
 export const getWeather = async (
   req: Request,
@@ -8,6 +9,7 @@ export const getWeather = async (
 ) => {
   try {
     const result = await model.invoke([
+      ["system", WEATHER_AGENT_PROMPT.content],
       ["human", "What's the weather in London?"],
     ]);
 
