@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getWeather } from '../weather/weather.service';
+import { getWeatherAgent } from "../weather/weather.service";
 
 const router: Router = Router();
 
-router.get('/', getWeather);
+router.post("/", getWeatherAgent);
 
 export const weatherRouter: Router = router;

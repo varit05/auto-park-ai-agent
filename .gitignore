@@ -44,3 +44,6 @@ next-env.d.ts
 .env.production
 
 dist/
+
+# LangGraph API
+.langgraph_api

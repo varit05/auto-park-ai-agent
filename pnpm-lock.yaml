@@ -17,6 +17,9 @@ importers:
       '@langchain/google':
         specifier: ^0.1.10
         version: 0.1.10(@langchain/core@1.1.39)
+      '@langchain/langgraph':
+        specifier: ^1.2.8
+        version: 1.2.8(@langchain/core@1.1.39)(zod@4.3.6)
       cors:
         specifier: ^2.8.6
         version: 2.8.6
