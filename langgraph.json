@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "weather-agent": "./app/gemini/weather/weather.graph.ts:default"
+  },
+  "env": ".env"
+}
